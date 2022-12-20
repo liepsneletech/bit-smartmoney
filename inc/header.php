@@ -15,8 +15,8 @@
 
   <header class="header">
     <nav class="navbar navbar-light container">
-      <nav class="navbar navbar-expand-lg navbar-light ">
-        <a href="#"><img src="../assets/img/logo.png" alt="SmartMoney logo"></a>
+      <nav class="navbar navbar-expand-lg navbar-dark ">
+        <a href="#"><img src="./assets/img/logo-dark.png" alt="SmartMoney logo" class="header-logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
           aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -24,10 +24,10 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
             <a class="nav-item nav-link active" href="#">Accounts</a>
-            <a class="nav-item nav-link" href="#">New account</a>
+            <a class="nav-item nav-link" href="#">Create account</a>
             <a class="nav-item nav-link" href="#">Deposit</a>
             <a class="nav-item nav-link" href="#">Withdrawal</a>
-            <a class="nav-item nav-link" href="#">LOGOUT</a>
+            <a class="nav-item nav-link" href="#">Logout</a>
           </div>
         </div>
       </nav>

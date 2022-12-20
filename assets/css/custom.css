@@ -7,10 +7,22 @@ body {
 }
 
 .header {
-  background: #e3f2fd;
+  background-color: #0f4d8b;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23757193' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+  box-shadow: 0 10px 20px 0 #0b376438;
+  padding: 10px 0;
 }
 
-.main {
+.header a {
+  color: #fff;
+}
+
+.header a.active {
+  color: #74b816 !important;
+  font-weight: 500;
+}
+
+.main-login {
   display: flex;
   align-items: center;
   min-height: 100vh;
@@ -32,7 +44,8 @@ body {
 
 .login-form input,
 .login-form label,
-.login-form small {
+.inner-form input,
+.inner-form label {
   margin-bottom: 15px;
   border: none;
   border-radius: 8px;
@@ -40,11 +53,13 @@ body {
   font-size: 15px;
 }
 
-.login-form input {
+.login-form input,
+.inner-form input {
   background: #1970c21c;
 }
 
-form.login-form {
+form.login-form,
+form.inner-form {
   padding: 40px;
   background-color: #fbfbfb;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23c6c4c8' fill-opacity='0.19' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
@@ -53,9 +68,17 @@ form.login-form {
   box-shadow: 0 5px 10px 0 #155da194;
 }
 
+.inner-form {
+  margin-top: 100px;
+}
+
 .logo-img {
   width: 100px;
   margin-bottom: 2px;
+}
+
+.header-logo {
+  width: 120px;
 }
 
 .bank-name {

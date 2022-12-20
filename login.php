@@ -23,36 +23,49 @@ if (isset($_GET['error'])) {
 
 ?>
 
-<?php require __DIR__ . './inc/header.php'; ?>
+<!DOCTYPE html>
+<html lang="en">
 
-<main class="main container">
-  <div class="row w-100 justify-content-center">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><?= $title ?></title>
+  <link href="./node_modules/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/custom.css">
+</head>
 
-    <div class="col- 10 col-lg-5">
+<body>
 
-      <img src="./assets/img/logo.png" alt="SmartMoney logo" class="logo-img ms-4">
-      <form class="login-form" action="http://localhost/smartmoney/login.php" method="post">
-        <div class="form-group">
+  <main class="main-login container">
+    <div class="row w-100 justify-content-center">
 
-          <input type="email" class="form-control" id="email" placeholder="Įrašykite el. paštą" name="email">
+      <div class="col- 10 col-lg-5">
 
-        </div>
-        <div class="form-group">
+        <img src="./assets/img/logo.png" alt="SmartMoney logo" class="logo-img ms-4">
+        <form class="login-form" action="http://localhost/smartmoney/login.php" method="post">
+          <div class="form-group">
 
-          <input type="password" class="form-control" id="pass" placeholder="Įrašykite slaptažodį" name="pass">
-        </div>
-        <button type="submit" class="btn btn-main">Prisijungti</button>
-      </form>
-      <p class="bank-name">SmartMoney</p>
+            <input type="email" class="form-control" id="email" placeholder="Įrašykite el. paštą" name="email">
 
-      <?php if (isset($error)) : ?>
-      <div class="alert alert-warning" role="alert"><?= $error ?></div>
-      <?php endif ?>
+          </div>
+          <div class="form-group">
+
+            <input type="password" class="form-control" id="pass" placeholder="Įrašykite slaptažodį" name="pass">
+          </div>
+          <button type="submit" class="btn btn-main">Prisijungti</button>
+        </form>
+        <p class="bank-name">SmartMoney</p>
+
+        <?php if (isset($error)) : ?>
+        <div class="alert alert-warning" role="alert"><?= $error ?></div>
+        <?php endif ?>
+
+      </div>
+
 
     </div>
+  </main>
 
-
-  </div>
-</main>
-
-<?php require __DIR__ . './inc/footer.php'; ?>
+  <?php require __DIR__ . './inc/footer.php'; ?>
