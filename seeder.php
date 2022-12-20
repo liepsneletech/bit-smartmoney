@@ -1,9 +1,9 @@
 <?php
 
-$users = [
-    ['name' => 'Bebras', 'psw' => '123', 'color' => 'crimson'],
-    ['name' => 'Briedis', 'psw' => '123', 'color' => 'skyblue'],
-    ['name' => 'Paršas', 'psw' => '123', 'color' => 'pink']
+$admins = [
+    ['email' => 'levickaite.m@gmail.com', 'pass' => md5('123')],
+    ['email' => 'varliukasm@gmail.com', 'pass' => md5('123')],
+    ['email' => 'eziukas@gmail.com', 'pass' => md5('123')],
 ];
 
-file_put_contents(__DIR__ . '/users', serialize($users));
+file_put_contents(__DIR__ . '/admins', serialize($admins));
