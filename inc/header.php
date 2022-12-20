@@ -14,22 +14,27 @@
 <body>
 
   <header class="header">
-    <nav class="navbar navbar-light container">
-      <nav class="navbar navbar-expand-lg navbar-dark ">
-        <a href="#"><img src="./assets/img/logo-dark.png" alt="SmartMoney logo" class="header-logo"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">Accounts</a>
-            <a class="nav-item nav-link" href="#">Create account</a>
-            <a class="nav-item nav-link" href="#">Deposit</a>
-            <a class="nav-item nav-link" href="#">Withdrawal</a>
-            <a class="nav-item nav-link" href="#">Logout</a>
+    <div class="container d-flex justify-content-between">
+      <a href="#"><img src="./assets/img/logo-dark.png" alt="SmartMoney logo" class="header-logo"></a>
+      <nav class="navbar navbar-light ">
+        <nav class="navbar navbar-expand-lg navbar-dark justify-content-center">
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-item nav-link active" href="http://localhost/smartmoney/accounts.php">Accounts</a>
+              <a class="nav-item nav-link" href="http://localhost/smartmoney/create-account.php">Create account</a>
+              <a class="nav-item nav-link" href="http://localhost/smartmoney/deposit.php">Deposit</a>
+              <a class="nav-item nav-link" href="http://localhost/smartmoney/withdrawal.php">Withdrawal</a>
+              <form method="post" action="http://localhost/smartmoney/login.php?logout">
+                <a class="nav-item nav-link" href="http://localhost/smartmoney/login.php">Logout</a>
+              </form>
+            </div>
           </div>
-        </div>
+        </nav>
       </nav>
-    </nav>
+    </div>
   </header>

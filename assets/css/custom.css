@@ -28,6 +28,16 @@ body {
   min-height: 100vh;
 }
 
+.main-inner {
+  padding: 50px;
+  background-color: #fbfbfb;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23c6c4c8' fill-opacity='0.19' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+  border-radius: 15px;
+  margin-top: 50px;
+  min-height: 80vh;
+  box-shadow: 0 5px 10px 0 #155da194;
+}
+
 .btn-main {
   background-color: #74b816;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23093010' fill-opacity='0.1' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
@@ -87,4 +97,13 @@ form.inner-form {
   font-weight: 300;
   font-size: 13px;
   margin-bottom: 40px;
+}
+
+.main-title {
+  color: #092b4b;
+  margin-bottom: 30px;
+}
+
+li {
+  list-style: none;
 }

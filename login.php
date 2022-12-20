@@ -3,6 +3,12 @@
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  if (isset($_GET['logout'])) {
+    unset($_SESSION['admin']);
+    header('Location: http://localhost/smartmoney/login.php');
+    die;
+  }
+
   $admins = unserialize(file_get_contents(__DIR__ . './admins'));
   foreach ($admins as $admin) {
     if ($admin['email'] === $_POST['email']) {
@@ -43,7 +49,7 @@ if (isset($_GET['error'])) {
 
       <div class="col- 10 col-lg-5">
 
-        <img src="./assets/img/logo.png" alt="SmartMoney logo" class="logo-img ms-4">
+        <img src="./assets/img/logo-super-dark.png" alt="SmartMoney logo" class="logo-img ms-4">
         <form class="login-form" action="http://localhost/smartmoney/login.php" method="post">
           <div class="form-group">
 

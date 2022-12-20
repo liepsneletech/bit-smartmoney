@@ -2,6 +2,7 @@
 
 
 
+
 ?>
 
 <?php require __DIR__ . './inc/header.php'; ?>
@@ -23,8 +24,7 @@
         </div>
 
         <div class="form-group">
-          <input type="text" class="form-control" id="personal-code" placeholder="Asmens kodas*" name="personal-code"
-            required>
+          <input type="text" class="form-control" id="personal-code" placeholder="Asmens kodas*" name="personal-code" required>
         </div>
 
         <div class="form-group">
@@ -34,8 +34,10 @@
         <button type="submit" class="btn btn-main">Sukurti</button>
       </form>
 
+      <p class="bank-name">SmartMoney</p>
+
       <?php if (isset($error)) : ?>
-      <div class="alert alert-warning" role="alert"><?= $error ?></div>
+        <div class="alert alert-warning" role="alert"><?= $error ?></div>
       <?php endif ?>
 
     </div>
