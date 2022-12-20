@@ -1,6 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Martian+Mono:wght@200;300;800&family=Poppins:wght@300;400;500;600&display=swap");
+
 body {
-  background-color: #edf6fb;
-  background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2383bedb' fill-opacity='0.4' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+  background-color: #1971c2;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%239C92AC' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+  font-family: Poppins, sans-serif;
 }
 
 .main {
@@ -10,20 +13,50 @@ body {
 }
 
 .btn-main {
-  background: orange;
+  background-color: #74b816;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23093010' fill-opacity='0.1' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
   color: #fff;
+  padding: 0.5em 2em;
+  border-radius: 10px;
 }
 
 .btn-main:hover {
-  background-color: rgb(253, 175, 29);
+  background: #fcc419;
   color: #fff;
 }
 
 .login-form input,
 .login-form label,
 .login-form small {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 8px;
+  padding: 0.7em 2em;
+  font-size: 15px;
 }
 
-.login-form {
+.login-form input {
+  background: #1970c21c;
+}
+
+form.login-form {
+  padding: 40px;
+  background-color: #fbfbfb;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23c6c4c8' fill-opacity='0.19' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+  border-radius: 15px;
+  border: solid 3px #fff;
+  box-shadow: 0 5px 10px 0 #155da194;
+}
+
+.logo-img {
+  width: 100px;
+  margin-bottom: 2px;
+}
+
+.bank-name {
+  color: #74b816;
+  text-align: right;
+  font-weight: 300;
+  font-size: 13px;
+  margin-bottom: 40px;
 }
