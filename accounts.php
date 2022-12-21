@@ -18,9 +18,13 @@ if (!file_exists(__DIR__ . '/users')) {
 <main class="container main-inner">
   <h1 class="main-title">Sąskaitos</h1>
   <div>
-    <?php foreach ($arr[0] as $accountDetails) : ?>
+    <?php foreach (unserialize(file_get_contents(__DIR__ . '/users')) as $user) : ?>
 
-    <span><?= $accountDetails ?></span>
+    <li>
+      <span><?= $user['name'] ?></span>
+      <form action="http://localhost/smartmoney/accounts.php/delete.php?id=<?= $user['name'] ?>" method="post"></form>
+      <button type="submit">DELETE</button>
+    </li>
 
     <?php endforeach ?>
   </div>

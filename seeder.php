@@ -7,9 +7,9 @@ $admins = [
 ];
 
 $users = [
-    ['id' => 1, 'name' => 'Agota', 'surname' => 'Kaminskaitė', 'personal-number' => '', 'iban' => ''],
-    ['id' => 2, 'name' => 'Martynas', 'surname' => 'Užubalis', 'personal-number' => '', 'iban' => ''],
-    ['id' => 3, 'name' => 'Liudmila', 'surname' => 'Krasovič', 'personal-number' => '', 'iban' => ''],
+    ['id' => rand(1000000, 10000000), 'name' => 'Agota', 'surname' => 'Kaminskaitė', 'personal-number' => '', 'iban' => ''],
+    ['id' => rand(1000000, 10000000), 'name' => 'Martynas', 'surname' => 'Užubalis', 'personal-number' => '', 'iban' => ''],
+    ['id' => rand(1000000, 10000000), 'name' => 'Liudmila', 'surname' => 'Krasovič', 'personal-number' => '', 'iban' => ''],
 ];
 
 file_put_contents(__DIR__ . '/admins', serialize($admins));
