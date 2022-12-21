@@ -20,16 +20,26 @@ require __DIR__ . './inc/header.php';
   <div>
     <?php foreach (unserialize(file_get_contents(__DIR__ . '/users')) as $user) : ?>
 
-    <div class="d-flex gap-3">
+    <div class="account-info-box">
       <div><?= $user['id'] ?></div>
-      <div><?= $user['name'] ?></div>
-      <div><?= $user['surname'] ?></div>
-      <div><?= $user['iban'] ?></div>
-    </div>
-    <form action="http://localhost/smartmoney/accounts.php/delete.php?id=<?= $user['name'] ?>" method="post">
-      <button type="submit">DELETE</button>
-    </form>
+      <div><?= $user['name'] . ' ' . $user['surname'] ?></div>
 
+      <div><?= $user['iban'] ?></div>
+
+      <form action="http://localhost/smartmoney/deposit.php?id=<?= $user['id'] ?>" method="post">
+        <button type="submit" class="btn btn-main btn-green">ĮNEŠTI</button>
+      </form>
+
+      <form action="http://localhost/smartmoney/withdrawal.php?id=<?= $user['id'] ?>" method="post">
+        <button type="submit" class="btn btn-main btn-yellow">IŠIMTI</button>
+      </form>
+
+      <form action="http://localhost/smartmoney/delete.php?id=<?= $user['id'] ?>" method="post">
+        <button type="submit" class="btn btn-main btn-red"><i class="fa-solid fa-x"></i></button>
+      </form>
+
+
+    </div>
 
     <?php endforeach ?>
   </div>

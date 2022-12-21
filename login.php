@@ -60,12 +60,12 @@ if (isset($_GET['error'])) {
 
             <input type="password" class="form-control" id="pass" placeholder="Įrašykite slaptažodį" name="pass">
           </div>
-          <button type="submit" class="btn btn-main">Prisijungti</button>
+          <button type="submit" class="btn btn-main btn-green btn-login">Prisijungti</button>
         </form>
         <p class="bank-name">SmartMoney</p>
 
         <?php if (isset($error)) : ?>
-        <div class="alert alert-warning" role="alert"><?= $error ?></div>
+          <div class="alert alert-warning" role="alert"><?= $error ?></div>
         <?php endif ?>
 
       </div>
