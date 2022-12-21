@@ -27,10 +27,8 @@
             <div class="navbar-nav">
               <a class="nav-item nav-link active" href="http://localhost/smartmoney/accounts.php">Accounts</a>
               <a class="nav-item nav-link" href="http://localhost/smartmoney/create-account.php">Create account</a>
-              <a class="nav-item nav-link" href="http://localhost/smartmoney/deposit.php">Deposit</a>
-              <a class="nav-item nav-link" href="http://localhost/smartmoney/withdrawal.php">Withdrawal</a>
               <form method="post" action="http://localhost/smartmoney/login.php?logout">
-                <a class="nav-item nav-link" href="http://localhost/smartmoney/login.php">Logout</a>
+                <button type="submit">Logout</button>
               </form>
             </div>
           </div>
