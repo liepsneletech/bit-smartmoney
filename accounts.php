@@ -26,7 +26,7 @@ require __DIR__ . './inc/header.php';
 
       <div><?= $user['iban'] ?></div>
 
-      <a href="http://localhost/smartmoney/deposit.php?id=<?= $user['id'] ?>">ĮNEŠTI</a>
+      <a href="http://localhost/smartmoney/add-page.php?id=<?= $user['id'] ?>">ĮNEŠTI</a>
 
       <a href="http://localhost/smartmoney/withdrawal.php?id=<?= $user['id'] ?>">IŠIMTI</a>
 
