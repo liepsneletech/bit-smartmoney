@@ -4,36 +4,54 @@ $users = unserialize(file_get_contents(__DIR__ . '/users'));
 
 $id = (int) $_GET['id'];
 
-foreach ($users as $index => $user) {
-  if ($user['id'] == $id) {
-    $users[$index]['balance'];
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  foreach ($users as $index => $value) {
+    if ($value['id'] == $id) {
+      $currentUser = $users[$index];
+      print_r($currentUser);
+    }
+  }
+
+  if (isset($_POST['balance'])) {
+    $amount = $_POST['balance'];
+    $currentUser['balance'] += (float) $amount;
+
+    foreach ($users as $index => &$value) {
+      if ($value['id'] == $id) {
+        $users[$index] = $currentUser;
+      }
+    }
+    file_put_contents(__DIR__ . '/users', serialize($users));
+    header("Location:http://localhost/smartmoney/deposit.php?id=$id");
+    die;
   }
 }
 
-file_put_contents(__DIR__ . '/users', serialize($users));
+
+
 require __DIR__ . './inc/header.php';
 ?>
 
 <main class="container main-inner">
   <h1 class="main-title">Įnešti į sąskaitą</h1>
   <div>
-    <?php foreach (unserialize(file_get_contents(__DIR__ . '/users')) as $user) : ?>
 
-      <div class="account-info-box">
+    <div class="account-info-box">
 
-        <div><?= $user['name'] . ' ' . $user['surname'] ?></div>
-        <div><?= $user['iban'] ?></div>
-        <div><?= $user['personal-number'] ?></div>
+      <div><?= $currentUser['name'] . ' ' . $currentUser['surname'] ?></div>
+      <div><?= $currentUser['iban'] ?></div>
+      <div><?= $currentUser['personal-number'] ?></div>
+      <div><?= $currentUser['balance'] ?></div>
 
-        <form action="http://localhost/smartmoney/deposit.php?id=<?= $user['id'] ?>" method="post">
-          <input type="text" name="balance">
-          <button type="submit" class="btn btn-main btn-green">ĮNEŠTI</button>
-        </form>
+      <form action="http://localhost/smartmoney/deposit.php?id=<?= $id ?>" method="post">
+        <input type="text" name="balance">
+        <button type="submit" class="btn btn-main btn-green">ĮNEŠTI</button>
+      </form>
 
 
-      </div>
-
-    <?php endforeach ?>
+    </div>
   </div>
 </main>
 
