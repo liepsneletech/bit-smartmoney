@@ -4,11 +4,18 @@ $users = unserialize(file_get_contents(__DIR__ . '/users'));
 
 $id = (int) $_GET['id'];
 
-foreach (unserialize(file_get_contents(__DIR__ . '/users')) as $user) {
-  if ($user['id'] === $id) {
+foreach ($users as $user) {
+  if ($user['id'] == $id) {
     break;
   }
 }
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  $user['balance'] += $_POST['balance'];
+  file_put_contents(__DIR__ . '/users', serialize($users));
+}
+
+
 
 require __DIR__ . './inc/header.php';
 ?>
