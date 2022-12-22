@@ -4,32 +4,11 @@ $users = unserialize(file_get_contents(__DIR__ . '/users'));
 
 $id = (int) $_GET['id'];
 
-
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  foreach ($users as $index => $value) {
-    if ($value['id'] == $id) {
-      $currentUser = $users[$index];
-      print_r($currentUser);
-    }
-  }
-
-  if (isset($_POST['balance'])) {
-    $amount = $_POST['balance'];
-    $currentUser['balance'] += (float) $amount;
-
-    foreach ($users as $index => &$value) {
-      if ($value['id'] == $id) {
-        $users[$index] = $currentUser;
-      }
-    }
-    file_put_contents(__DIR__ . '/users', serialize($users));
-    header("Location:http://localhost/smartmoney/deposit.php?id=$id");
-    die;
+foreach (unserialize(file_get_contents(__DIR__ . '/users')) as $user) {
+  if ($user['id'] === $id) {
+    break;
   }
 }
-
-
 
 require __DIR__ . './inc/header.php';
 ?>
@@ -39,19 +18,14 @@ require __DIR__ . './inc/header.php';
   <div>
 
     <div class="account-info-box">
-
-      <div><?= $currentUser['name'] . ' ' . $currentUser['surname'] ?></div>
-      <div><?= $currentUser['iban'] ?></div>
-      <div><?= $currentUser['personal-number'] ?></div>
-      <div><?= $currentUser['balance'] ?></div>
-
+      <p>Dabartinis likutis: <?= $user['balance'] ?></p>
       <form action="http://localhost/smartmoney/deposit.php?id=<?= $id ?>" method="post">
         <input type="text" name="balance">
-        <button type="submit" class="btn btn-main btn-green">ĮNEŠTI</button>
+        <button type="submit" class="btn btn-main btn-green">ĮNEŠTI LĖŠŲ</button>
       </form>
 
-
     </div>
+
   </div>
 </main>
 

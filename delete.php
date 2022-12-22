@@ -2,12 +2,15 @@
 
 $users = unserialize(file_get_contents(__DIR__ . '/users'));
 
-$id = $_GET['id'];
+$id = (int) $_GET['id'];
 
 foreach ($users as $index => $user) {
   if ($user['id'] == $id) {
-    unset($user[$index]);
+    unset($users[$index]);
+    break;
   }
 }
+
+file_put_contents(__DIR__ . '/users', serialize($users));
 
 header('Location: http://localhost/smartmoney/accounts.php');
