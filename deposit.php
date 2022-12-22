@@ -4,18 +4,19 @@ $users = unserialize(file_get_contents(__DIR__ . '/users'));
 
 $id = (int) $_GET['id'];
 
-foreach ($users as $user) {
-  if ($user['id'] == $id) {
-    break;
-  }
-}
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $user['balance'] += $_POST['balance'];
-  file_put_contents(__DIR__ . '/users', serialize($users));
+  foreach ($users as $i => $user) {
+    if ($user['id'] == $id) {
+      $balance = $user['balance'];
+      $balance += (float) $_POST['balance'];
+      break;
+    }
+  }
+  file_put_contents(__DIR__ . '/data', serialize($users));
+  header("http://localhost/smartmoney/deposit.php?id=$id");
 }
-
-
 
 require __DIR__ . './inc/header.php';
 ?>
