@@ -10,8 +10,10 @@ if (!file_exists(__DIR__ . '/users')) {
   $arr = [];
 } else {
   $arr = unserialize(file_get_contents(__DIR__ . '/users'));
-  $arrOfSurnames = array_column($arr, $arr['surname']);
-  $sortedArr = array_multisort($arr, SORT_DESC, $arrOfSurnames);
+  foreach ($arr as $user) {
+    $arrOfSurnames[] = $user['surname'];
+  }
+  array_multisort($arrOfSurnames, SORT_ASC, $arr,);
 }
 
 require __DIR__ . './inc/header.php';

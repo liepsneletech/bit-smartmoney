@@ -29,7 +29,7 @@ require __DIR__ . './inc/header.php';
 ?>
 
 <main class="container main-inner">
-  <h1 class="main-title">Įnešti į sąskaitą</h1>
+  <h1 class="main-title">Įnešti lėšų į sąskaitą</h1>
   <div>
 
     <div class="account-info-box">
