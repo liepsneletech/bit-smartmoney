@@ -23,10 +23,10 @@ require __DIR__ . './inc/header.php';
     <div class="account-info-box">
       <div><?= $user['id'] ?></div>
       <div><?= $user['name'] . ' ' . $user['surname'] ?></div>
-
+      <div><?= $user['balance'] ?></div>
       <div><?= $user['iban'] ?></div>
 
-      <a href="http://localhost/smartmoney/add-page.php?id=<?= $user['id'] ?>">ĮNEŠTI</a>
+      <a href="http://localhost/smartmoney/add.php?id=<?= $user['id'] ?>">ĮNEŠTI</a>
 
       <a href="http://localhost/smartmoney/withdrawal.php?id=<?= $user['id'] ?>">IŠIMTI</a>
 

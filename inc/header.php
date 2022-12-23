@@ -25,10 +25,10 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-item nav-link active" href="http://localhost/smartmoney/accounts.php">Accounts</a>
-              <a class="nav-item nav-link" href="http://localhost/smartmoney/create-account.php">Create account</a>
+              <a class="nav-item nav-link active" href="http://localhost/smartmoney/accounts.php">Sąskaitos</a>
+              <a class="nav-item nav-link" href="http://localhost/smartmoney/create-account.php">Sukurti sąskaitą</a>
               <form method="post" action="http://localhost/smartmoney/login.php?logout" class="d-flex">
-                <button type="submit" class="logout-btn">Logout <i
+                <button type="submit" class="btn-green logout-btn">Atsijungti<i
                     class="fa-solid fa-arrow-right-from-bracket ms-1"></i></button>
               </form>
             </div>

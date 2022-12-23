@@ -6,34 +6,39 @@ $id = (int) $_GET['id'];
 
 foreach ($users as $index => $user) {
   if ($user['id'] == $id) {
-    $users[$index]['balance'];
+    $currentUser = $users[$index];
+    break;
   }
 }
 
-file_put_contents(__DIR__ . '/users', serialize($users));
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  foreach ($users as $index => $user) {
+    if ($user['id'] == $id) {
+      $users[$index]['balance'] -= (float) $_POST['balance'];
+      break;
+    }
+  }
+  file_put_contents(__DIR__ . '/users', serialize($users));
+  header("Location: http://localhost/smartmoney/withdrawal.php?id=$id");
+  die;
+}
+
 require __DIR__ . './inc/header.php';
 ?>
 
 <main class="container main-inner">
-  <h1 class="main-title">Išimti iš sąskaitos</h1>
+  <h1 class="main-title">Įnešti į sąskaitą</h1>
   <div>
-    <?php foreach (unserialize(file_get_contents(__DIR__ . '/users')) as $user) : ?>
 
     <div class="account-info-box">
-
-      <div><?= $user['name'] . ' ' . $user['surname'] ?></div>
-      <div><?= $user['iban'] ?></div>
-      <div><?= $user['personal-number'] ?></div>
-
-      <form action="http://localhost/smartmoney/deposit.php?id=<?= $user['id'] ?>" method="post">
+      <p>Dabartinis likutis: <?= $currentUser['balance'] ?></p>
+      <form action="http://localhost/smartmoney/withdrawal.php?id=<?= $id ?>" method="post">
         <input type="text" name="balance">
-        <button type="submit" class="btn btn-main btn-green">IŠSIIMTI</button>
+        <button type="submit" class="btn btn-main btn-green">ĮNEŠTI LĖŠŲ</button>
       </form>
-
 
     </div>
 
-    <?php endforeach ?>
   </div>
 </main>
 
