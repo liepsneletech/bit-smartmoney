@@ -10,6 +10,8 @@ if (!file_exists(__DIR__ . '/users')) {
   $arr = [];
 } else {
   $arr = unserialize(file_get_contents(__DIR__ . '/users'));
+  $arrOfSurnames = array_column($arr, $arr['surname']);
+  $sortedArr = array_multisort($arr, SORT_DESC, $arrOfSurnames);
 }
 
 require __DIR__ . './inc/header.php';
@@ -18,7 +20,7 @@ require __DIR__ . './inc/header.php';
 <main class="container main-inner">
   <h1 class="main-title">Sąskaitos</h1>
   <div>
-    <?php foreach (unserialize(file_get_contents(__DIR__ . '/users')) as $user) : ?>
+    <?php foreach ($arr as $user) : ?>
 
     <div class="account-info-box">
       <div><?= $user['id'] ?></div>

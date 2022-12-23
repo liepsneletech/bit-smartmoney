@@ -39,6 +39,8 @@ require __DIR__ . './inc/header.php';
 ?>
 
 <main class="main-inner container">
+  <h1 class="main-title">Sukurti sąskaitą</h1>
+
   <div class="row w-100 justify-content-center">
 
     <div class="col- 10 col-lg-5">

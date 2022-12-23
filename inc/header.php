@@ -15,7 +15,8 @@
 
   <header class="header">
     <div class="container d-flex justify-content-between">
-      <a href="#"><img src="./assets/img/logo-dark.png" alt="SmartMoney logo" class="header-logo"></a>
+      <a href="http://localhost/smartmoney/accounts.php"><img src="./assets/img/logo-dark.png" alt="SmartMoney logo"
+          class="header-logo"></a>
       <nav class="navbar navbar-light ">
         <nav class="navbar navbar-expand-lg navbar-dark justify-content-center">
 

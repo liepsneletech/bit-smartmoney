@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
   }
   file_put_contents(__DIR__ . '/users', serialize($users));
-  header("Location: http://localhost/smartmoney/add.php?id=$id");
+  header("Location: http://localhost/smartmoney/accounts.php");
   die;
 }
 

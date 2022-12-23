@@ -34,7 +34,7 @@ require __DIR__ . './inc/header.php';
       <p>Dabartinis likutis: <?= $currentUser['balance'] ?></p>
       <form action="http://localhost/smartmoney/withdrawal.php?id=<?= $id ?>" method="post">
         <input type="text" name="balance">
-        <button type="submit" class="btn btn-main btn-green">ĮNEŠTI LĖŠŲ</button>
+        <button type="submit" class="btn btn-main btn-green">IŠIMTI LĖŠŲ</button>
       </form>
 
     </div>
