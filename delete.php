@@ -8,6 +8,11 @@ foreach ($users as $index => $user) {
   if ($user['id'] == $id && $user['balance'] === 0) {
     unset($users[$index]);
     break;
+  } else if ($user['id'] == $id && $user['balance'] > 0) {
+    break;
+    echo "Labadiena";
+    require __DIR__ . '/modal.php';
+    header('Location: http://localhost/smartmoney/accounts.php');
   }
 }
 

@@ -30,8 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     echo 'Neteisingas asmens kodas.';
   }
 
-
-
   $newUser = ['id' => rand(1000000, 9999999), 'name' => $name, 'surname' => $surname, 'personal-number' => $personalNumber, 'iban' => $ibanValue, 'balance' => 0];
 
   $users[] = $newUser;

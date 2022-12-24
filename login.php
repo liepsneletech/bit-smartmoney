@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 if (isset($_GET['error'])) {
-  $error = 'Email or password error! Please try again.';
+  $error = 'Neteisingas el. paštas arba slaptažodis! Bandykite dar kartą.';
 }
 
 ?>

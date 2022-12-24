@@ -20,7 +20,7 @@ require __DIR__ . './inc/header.php';
 ?>
 
 <main class="container main-inner">
-  <h1 class="main-title">Sąskaitos</h1>
+  <h1 class="main-title">Sąskaitų sąrašas</h1>
   <div>
     <?php foreach ($arr as $user) : ?>
 
@@ -28,8 +28,8 @@ require __DIR__ . './inc/header.php';
       <div><?= $user['id'] ?></div>
       <div><?= $user['name'] . ' ' . $user['surname'] ?></div>
       <div><?= $user['personal-number'] ?></div>
-      <div><?= $user['balance'] ?></div>
       <div><?= $user['iban'] ?></div>
+      <div><?= $user['balance'] ?></div>
 
       <a href="http://localhost/smartmoney/add.php?id=<?= $user['id'] ?>" class="btn btn-main btn-green">ĮNEŠTI</a>
 
