@@ -47,25 +47,29 @@ require __DIR__ . './inc/header.php';
 
 ?>
 
-<main class="main-inner container">
-  <h1 class="main-title">Sukurti sąskaitą</h1>
-  <img src="./assets/img/money-ill.png" alt="Money illustration" class="money-pic">
-  <form class="registration-form" action="http://localhost/smartmoney/create-account.php" method="post">
+<main class=" container">
+  <div class="main-inner">
+    <h1 class="main-title">Sukurti sąskaitą</h1>
+    <img src="./assets/img/money-ill.png" alt="Money illustration" class="money-pic">
+    <form class="registration-form" action="http://localhost/smartmoney/create-account.php" method="post">
 
-    <input type="text" id="name" placeholder="Vardas*" name="name" required>
+      <input type="text" id="name" placeholder="Vardas*" name="name" required>
 
-    <input type="text" id="surname" placeholder="Pavardė*" name="surname" required>
+      <input type="text" id="surname" placeholder="Pavardė*" name="surname" required>
 
-    <input type="text" id="personal-number" placeholder="Asmens kodas*" name="personal-number" required>
+      <input type="text" id="personal-number" placeholder="Asmens kodas*" name="personal-number" required>
 
-    <input type="text" id="iban" placeholder="IBAN*" name="iban" value="LT <?= $ibanValue ?>" readonly>
+      <input type="text" id="iban" placeholder="IBAN*" name="iban" value="LT <?= $ibanValue ?>" readonly>
 
-    <button type="submit" name="submit" class="btn-main btn-green">Sukurti</button>
-  </form>
+      <button type="submit" name="submit" class="btn-main btn-green"><i
+          class="fa-solid fa-user-plus add-person-icon"></i>
+        SUKURTI</button>
+    </form>
 
-  <?php if (isset($error)) : ?>
-  <div class="warning-red" role="alert"><?= $error ?></div>
-  <?php endif ?>
+    <?php if (isset($error)) : ?>
+    <div class="warning-red" role="alert"><?= $error ?></div>
+    <?php endif ?>
+  </div>
 
 </main>
 <?php require __DIR__ . './inc/footer.php'; ?>

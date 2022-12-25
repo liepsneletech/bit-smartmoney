@@ -23,25 +23,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   die;
 }
 
-
-
 require __DIR__ . './inc/header.php';
 ?>
 
-<main class="container main-inner">
-  <h1 class="main-title">Įnešti lėšų į sąskaitą</h1>
-  <div>
+<main class="container ">
+  <div class="main-inner">
+    <h1 class="main-title">Įnešti lėšų į sąskaitą</h1>
 
-    <div class="account-info-box">
-      <p>Dabartinis likutis: <?= $currentUser['balance'] ?></p>
-      <form action="http://localhost/smartmoney/add.php?id=<?= $id ?>" method="post">
-        <input type="text" name="balance">
-        <button type="submit" class="btn btn-main btn-green">ĮNEŠTI LĖŠŲ</button>
-      </form>
-
-    </div>
-
+    <form action="http://localhost/smartmoney/add.php?id=<?= $id ?>" method="post" class="money-operation-box">
+      <p class="full-name"><i class="fa-solid fa-user-large person-icon"></i>
+        <?= $user['name'] . ' ' . $user['surname'] ?></p>
+      <strong>Sąskaitos likutis: <?= number_format($user['balance'], 2, ',', ' ') ?> &euro;</strong>
+      <input type="text" name="balance" placeholder="Įrašykite sumą">
+      <button type="submit" class="btn btn-main btn-green">PATVIRTINTI</button>
+      <div class="img-box"><img src="./assets/img/add-money-pic.png" alt="Add money" class="add-money-pic"></div>
+    </form>
   </div>
+
 </main>
 
 <?php require __DIR__ . './inc/footer.php'; ?>

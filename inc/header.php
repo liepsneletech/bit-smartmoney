@@ -19,8 +19,10 @@
           class="header-logo-mobile"></a>
 
       <nav class="main-nav">
-        <a class="nav-link active" href="http://localhost/smartmoney/accounts.php">Sąskaitos</a>
-        <a class="nav-link" href="http://localhost/smartmoney/create-account.php">Sukurti sąskaitą</a>
+        <a class="nav-link <?= $currentPage === 'accounts' ? 'active' : '' ?>"
+          href="http://localhost/smartmoney/accounts.php">Sąskaitos</a>
+        <a class="nav-link <?= $currentPage === 'create-account' ? 'active' : '' ?>"
+          href="http://localhost/smartmoney/create-account.php">Sukurti sąskaitą</a>
         <form method="post" action="http://localhost/smartmoney/login.php?logout" class="d-inline-block">
           <button type="submit" class="nav-link logout-btn">Atsijungti<i
               class="fa-solid fa-arrow-right-from-bracket logout-icon"></i></button>

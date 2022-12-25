@@ -9,9 +9,10 @@ $id = (int) $_GET['id'];
 foreach ($users as $index => $user) {
   if ($user['id'] == $id && $user['balance'] == 0) {
     unset($users[$index]);
+    $_SESSION['success-delete'] = "Sąskaita sėkmingai ištrinta.";
     break;
   } else if (($user['id'] == $id && $user['balance'] > 0)) {
-    $_SESSION['warning'] = "Negalima ištrinti sąskaitos, kurioje yra lėšų!";
+    $_SESSION['error-delete'] = "Negalima ištrinti sąskaitos, kurioje yra lėšų!";
     break;
   }
 }
