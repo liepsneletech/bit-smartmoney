@@ -27,6 +27,7 @@ p {
 
 button {
   cursor: pointer;
+  display: inline-block;
 }
 
 .container {
@@ -169,8 +170,9 @@ button {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23c6c4c8' fill-opacity='0.19' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
   border-radius: 15px;
   margin-top: 40px;
-  min-height: 80vh;
+  min-height: 70vh;
   box-shadow: 0 5px 10px 0 #155da194;
+  position: relative;
 }
 
 @media (min-width: 576px) {
@@ -198,6 +200,10 @@ button {
   padding: 5px 20px;
 }
 
+.accounts-btn:hover {
+  background: #104577;
+}
+
 .btn-green {
   background-color: #74b816;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23093010' fill-opacity='0.1' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
@@ -219,7 +225,8 @@ button {
 }
 
 input {
-  display: inline-block;
+  font-family: Poppins, sans-serif;
+  display: block;
   margin-bottom: 15px;
   border: none;
   border-radius: 20px;
@@ -229,11 +236,14 @@ input {
   width: 100%;
 }
 
-.registration-form input {
+.registration-form {
   max-width: 40%;
+  margin: 85px auto;
 }
 
-.registration-form {
+.registration-form input,
+.registration-form button {
+  margin: 15px auto;
 }
 
 .login-block {
@@ -357,6 +367,13 @@ input {
   align-items: center;
   gap: auto;
   max-width: 200px;
+}
+
+.money-pic {
+  position: absolute;
+  right: 40px;
+  bottom: 30px;
+  width: 120px;
 }
 
 /* ALERTS */

@@ -1,6 +1,9 @@
 <?php
 
 session_start();
+
+$currentPage = 'accounts';
+
 if (!isset($_SESSION['admin'])) {
   header('Location: http://localhost/smartmoney/login.php?error');
   die;
@@ -30,7 +33,6 @@ require __DIR__ . './inc/header.php';
     <h1 class=" main-title">Sąskaitų sąrašas</h1>
     <?= isset($warningDelete) ? "<p class='warning-red'>$warningDelete</p>" : '' ?>
     <div>
-
       <?php foreach ($arr as $user) : ?>
 
       <div class="account-info-box">
@@ -43,7 +45,7 @@ require __DIR__ . './inc/header.php';
         </div>
 
         <div class="accounts-right-box">
-          <p class="balance"><?= $user['balance'] ?> &euro;</p>
+          <p class="balance"><?= number_format($user['balance'], 2, ',', ' ') ?> &euro;</p>
           <div class="accounts-btns">
             <a href="http://localhost/smartmoney/add.php?id=<?= $user['id'] ?>" class="accounts-btn btn-green"><i
                 class="fa-solid fa-plus"></i><i class="fa-solid fa-circle-dollar"></i></a>
@@ -56,14 +58,13 @@ require __DIR__ . './inc/header.php';
             </form>
           </div>
 
-
         </div>
 
       </div>
 
-
       <?php endforeach ?>
     </div>
+
   </div>
 </main>
 

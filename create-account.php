@@ -2,6 +2,8 @@
 
 session_start();
 
+$currentPage = 'create-account';
+
 $users = unserialize(file_get_contents(__DIR__ . '/users'));
 
 $ibanValue = rand(0, 9) . rand(0, 9) . ' ' . '0014' . ' ' . '7' . rand(0, 9) . rand(0, 9) . rand(0, 9) . ' ' . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9)  . ' ' . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9);
@@ -47,36 +49,23 @@ require __DIR__ . './inc/header.php';
 
 <main class="main-inner container">
   <h1 class="main-title">Sukurti sąskaitą</h1>
-  <div>
+  <img src="./assets/img/money-ill.png" alt="Money illustration" class="money-pic">
+  <form class="registration-form" action="http://localhost/smartmoney/create-account.php" method="post">
 
-    <div>
+    <input type="text" id="name" placeholder="Vardas*" name="name" required>
 
-      <form class="registration-form" action="http://localhost/smartmoney/create-account.php" method="post">
+    <input type="text" id="surname" placeholder="Pavardė*" name="surname" required>
 
-        <div>
-          <input type="text" class="form-control" id="name" placeholder="Vardas*" name="name" required>
-        </div>
+    <input type="text" id="personal-number" placeholder="Asmens kodas*" name="personal-number" required>
 
-        <div>
-          <input type="text" class="form-control" id="surname" placeholder="Pavardė*" name="surname" required>
-        </div>
+    <input type="text" id="iban" placeholder="IBAN*" name="iban" value="LT <?= $ibanValue ?>" readonly>
 
-        <div>
-          <input type="text" class="form-control" id="personal-number" placeholder="Asmens kodas*" name="personal-number" required>
-        </div>
+    <button type="submit" name="submit" class="btn-main btn-green">Sukurti</button>
+  </form>
 
-        <div>
-          <input type="text" class="form-control" id="iban" placeholder="IBAN*" name="iban" value="LT <?= $ibanValue ?>" readonly>
-        </div>
+  <?php if (isset($error)) : ?>
+  <div class="warning-red" role="alert"><?= $error ?></div>
+  <?php endif ?>
 
-        <button type="submit" name="submit" class="btn-main btn-green">Sukurti</button>
-      </form>
-
-      <?php if (isset($error)) : ?>
-        <div class="alert alert-warning" role="alert"><?= $error ?></div>
-      <?php endif ?>
-
-    </div>
-
-    <?php require __DIR__ . './inc/footer.php';
-    ?>
+</main>
+<?php require __DIR__ . './inc/footer.php'; ?>

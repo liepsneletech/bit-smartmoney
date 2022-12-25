@@ -4,12 +4,6 @@
 
 </footer>
 
-<script>
-
-
-
-</script>
-
 </body>
 
 </html>
