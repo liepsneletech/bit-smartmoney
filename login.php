@@ -44,34 +44,33 @@ if (isset($_GET['error'])) {
 
 <body>
 
-  <main class="main-login container">
-    <div class="row w-100 justify-content-center">
+  <main class="main-login container login-block">
 
-      <div class="col- 10 col-lg-5">
+    <div>
+      <img src="./assets/img/logo-super-dark.png" alt="SmartMoney logo" class="login-logo">
 
-        <img src="./assets/img/logo-super-dark.png" alt="SmartMoney logo" class="logo-img ms-4">
-        <form class="login-form" action="http://localhost/smartmoney/login.php" method="post">
-          <div class="form-group">
 
-            <input type="email" class="form-control" id="email" placeholder="Įrašykite el. paštą" name="email">
 
-          </div>
-          <div class="form-group">
+      <form class="login-form" action="http://localhost/smartmoney/login.php" method="post">
 
-            <input type="password" class="form-control" id="pass" placeholder="Įrašykite slaptažodį" name="pass">
-          </div>
-          <button type="submit" class="btn btn-main btn-green btn-login">Prisijungti</button>
-        </form>
-        <p class="bank-name">SmartMoney</p>
+        <div>
+          <input type="email" id="email" placeholder="Įrašykite el. paštą" name="email">
+        </div>
+        <div>
+          <input type="password" id="pass" placeholder="Įrašykite slaptažodį" name="pass">
+        </div>
 
-        <?php if (isset($error)) : ?>
-        <div class="alert alert-warning" role="alert"><?= $error ?></div>
-        <?php endif ?>
+        <button type="submit" class="btn-main btn-green btn-submit">Prisijungti</button>
+      </form>
 
-      </div>
+      <p class="bank-name">SmartMoney</p>
 
+      <?php if (isset($error)) : ?>
+      <div class="warning-red"><?= $error ?></div>
+      <?php endif ?>
 
     </div>
+
   </main>
 
   <?php require __DIR__ . './inc/footer.php'; ?>

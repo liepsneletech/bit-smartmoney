@@ -4,7 +4,7 @@ session_start();
 
 $users = unserialize(file_get_contents(__DIR__ . '/users'));
 
-$ibanValue = 'LT' . ' ' . rand(0, 9) . rand(0, 9) . ' ' . '0014' . ' ' . '7' . rand(0, 9) . rand(0, 9) . rand(0, 9) . ' ' . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9)  . ' ' . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9);
+$ibanValue = rand(0, 9) . rand(0, 9) . ' ' . '0014' . ' ' . '7' . rand(0, 9) . rand(0, 9) . rand(0, 9) . ' ' . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9)  . ' ' . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
   if (preg_match('/[a-ząčęėįšųū\s]{4,}/i', $_POST['name'])) {
@@ -40,42 +40,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
   die;
 }
 
+
 require __DIR__ . './inc/header.php';
 
 ?>
 
 <main class="main-inner container">
   <h1 class="main-title">Sukurti sąskaitą</h1>
-  <div class="row w-100 justify-content-center">
+  <div>
 
-    <div class="col- 10 col-lg-5">
-
+    <div>
 
       <form class="registration-form" action="http://localhost/smartmoney/create-account.php" method="post">
 
-        <div class="form-group">
+        <div>
           <input type="text" class="form-control" id="name" placeholder="Vardas*" name="name" required>
         </div>
 
-        <div class="form-group">
+        <div>
           <input type="text" class="form-control" id="surname" placeholder="Pavardė*" name="surname" required>
         </div>
 
-        <div class="form-group">
-          <input type="text" class="form-control" id="personal-number" placeholder="Asmens kodas*"
-            name="personal-number" required>
+        <div>
+          <input type="text" class="form-control" id="personal-number" placeholder="Asmens kodas*" name="personal-number" required>
         </div>
 
-        <div class="form-group">
-          <input type="text" class="form-control" id="iban" placeholder="IBAN*" name="iban" value="<?= $ibanValue ?>"
-            readonly>
+        <div>
+          <input type="text" class="form-control" id="iban" placeholder="IBAN*" name="iban" value="LT <?= $ibanValue ?>" readonly>
         </div>
 
-        <button type="submit" name="submit" class="btn btn-main btn-green">Sukurti</button>
+        <button type="submit" name="submit" class="btn-main btn-green">Sukurti</button>
       </form>
 
       <?php if (isset($error)) : ?>
-      <div class="alert alert-warning" role="alert"><?= $error ?></div>
+        <div class="alert alert-warning" role="alert"><?= $error ?></div>
       <?php endif ?>
 
     </div>

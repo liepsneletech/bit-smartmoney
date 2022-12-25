@@ -2,26 +2,159 @@
 @import url("https://fonts.googleapis.com/css2?family=Prompt:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Kodchasan:wght@500&family=Montserrat:wght@500&family=Prompt:wght@500&display=swap");
 
+body,
+body * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-color: #1971c2;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%239C92AC' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
   font-family: Poppins, sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
+p {
+  color: rgb(54, 54, 54);
+  line-height: 1.6;
+  letter-spacing: 0.7px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  width: 1300px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+@media (min-width: 576px) {
+  .container {
+    padding: 0 30px;
+  }
+}
+
+.d-inline-block {
+  display: inline-block;
+}
+
+.login-logo {
+  width: 100px;
+  margin-bottom: 2px;
+}
+
+.header-logo-desktop {
+  width: 220px;
+}
+
+.header-logo-mobile {
+  display: none;
+  width: 90px;
+}
+
+@media (max-width: 480px) {
+  .header-logo-desktop {
+    display: none;
+  }
+
+  .header-logo-mobile {
+    display: inline-block;
+  }
+}
+
+.bank-name {
+  font-family: Kodchasan;
+  color: #74b816;
+  text-align: right;
+  font-weight: 300;
+  font-size: 14px;
+  margin-top: 3px;
+  margin-bottom: 40px;
+}
+
+.main-title {
+  color: #104577;
+  margin-bottom: 25px;
+  font-family: "Kodchasan";
+  text-align: center;
+  font-size: 25px;
+}
+
+@media (min-width: 576px) {
+  .main-title {
+    font-size: 37px;
+    margin-bottom: 50px;
+  }
+}
+
 .header {
   background-color: #0f4d8b;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23757193' fill-opacity='0.4' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
   box-shadow: 0 10px 20px 0 #0b376438;
-  padding: 15px 0;
+  padding: 15px 20px;
+}
+
+@media (min-width: 576px) {
+  .header {
+    padding: 15px 0;
+  }
 }
 
 .header a {
   color: #fff;
+  font-weight: 400;
 }
 
 .header a.active {
   color: #74b816 !important;
   font-weight: 500;
+}
+
+.footer {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.466);
+  font-weight: 14px;
+  padding: 50px 20px 30px;
+}
+
+.header-content-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.main-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+@media (min-width: 768px) {
+  .main-nav {
+    flex-direction: row;
+    gap: 15px;
+  }
+}
+
+.nav-link {
+  display: inline-block;
+  font-size: 16px;
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
+}
+
+.nav-link:hover {
+  color: #74b816;
+  font-weight: 400;
 }
 
 .main-login {
@@ -31,41 +164,51 @@ body {
 }
 
 .main-inner {
-  padding: 70px 50px;
+  padding: 40px 25px;
   background-color: #fbfbfb;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23c6c4c8' fill-opacity='0.19' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
   border-radius: 15px;
-  margin-top: 60px;
-  margin-bottom: 90px;
+  margin-top: 40px;
   min-height: 80vh;
   box-shadow: 0 5px 10px 0 #155da194;
 }
 
-.btn-main {
+@media (min-width: 576px) {
+  .main-inner {
+    padding: 80px 50px;
+    margin-top: 60px;
+  }
+}
+
+.btn-main,
+.accounts-btn {
   font-family: "Montserrat";
-  font-weight: bol;
   color: #fff;
-  padding: 0.5em 1em;
   border-radius: 20px;
   border: none;
   font-size: 14px;
+  text-align: center;
 }
 
-.btn-login {
-  font-size: 16px;
+.btn-main {
+  padding: 0.8em 2.5em;
 }
 
-.btn-main.btn-green {
+.accounts-btn {
+  padding: 5px 20px;
+}
+
+.btn-green {
   background-color: #74b816;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23093010' fill-opacity='0.1' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
 }
 
-.btn-main.btn-yellow {
+.btn-yellow {
   background-color: #fcc419;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23093010' fill-opacity='0.1' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
 }
 
-.btn-main.btn-red {
+.btn-red {
   background-color: #d9480f;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23093010' fill-opacity='0.1' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
 }
@@ -75,24 +218,32 @@ body {
   color: #fff;
 }
 
-.registration-form input,
-.login-form input,
-.inner-form label {
+input {
+  display: inline-block;
   margin-bottom: 15px;
   border: none;
-  border-radius: 8px;
+  border-radius: 20px;
   padding: 0.7em 2em;
   font-size: 15px;
-}
-
-.registration-form input,
-.login-form input,
-.inner-form input {
   background: #1970c21c;
+  width: 100%;
 }
 
-form.login-form,
-form.inner-form {
+.registration-form input {
+  max-width: 40%;
+}
+
+.registration-form {
+}
+
+.login-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form,
+.inner-form {
   padding: 40px;
   background-color: #fbfbfb;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23c6c4c8' fill-opacity='0.19' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
@@ -101,36 +252,21 @@ form.inner-form {
   box-shadow: 0 5px 10px 0 #155da194;
 }
 
-.registration-form {
-  margin-top: 50px;
+.login-form {
+  width: 280px;
+  max-width: 100%;
+  padding: 20px;
+}
+
+@media (min-width: 576px) {
+  .login-form {
+    width: 450px;
+    padding: 40px;
+  }
 }
 
 .inner-form {
   margin-top: 100px;
-}
-
-.logo-img {
-  width: 100px;
-  margin-bottom: 2px;
-}
-
-.header-logo {
-  width: 120px;
-}
-
-.bank-name {
-  color: #74b816;
-  text-align: right;
-  font-weight: 300;
-  font-size: 13px;
-  margin-bottom: 40px;
-}
-
-.main-title {
-  color: #104577;
-  margin-bottom: 50px;
-  font-family: "Kodchasan";
-  text-align: center;
 }
 
 .logout-btn {
@@ -138,18 +274,98 @@ form.inner-form {
   color: white;
   border: none;
   padding: 0;
-  margin-left: 8px;
+}
+
+.logout-icon {
+  margin-left: 6px;
+}
+
+.account-info-box {
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  border-bottom: solid 1px rgba(102, 102, 102, 0.116);
+  padding: 30px 0;
+  width: 100%;
+}
+
+@media (min-width: 400px) {
+  .account-info-box {
+    padding: 27px;
+  }
+}
+
+@media (min-width: 768px) {
+  .account-info-box {
+    grid-template-columns: auto auto;
+  }
+}
+
+@media (min-width: 992px) {
+  .account-info-box {
+    grid-template-columns: 8% 20% 22% 28%;
+  }
 }
 
 .account-info-box:first-child {
   border-top: solid 1px rgba(102, 102, 102, 0.116);
 }
 
-.account-info-box {
-  display: grid;
-  grid-auto-flow: column;
+.person-icon {
+  margin-right: 5px;
+  color: #74b816;
+  font-size: 13px;
+}
+
+.id-number {
+  color: rgba(102, 102, 102, 0.856);
+}
+
+.balance {
+  background: #1970c21c;
+  padding: 7px 20px;
+  border-radius: 18px;
+  width: 200px;
+}
+
+.full-name,
+.personal-number-abbr,
+.iban-lt-chars {
+  color: #104577;
+  font-weight: 500;
+}
+
+.accounts-right-box {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+@media (min-width: 992px) {
+  .accounts-right-box {
+    padding-left: 60px;
+    border-left: solid 1px rgba(102, 102, 102, 0.116);
+  }
+}
+
+.accounts-btns {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 20px;
-  border-bottom: solid 1px rgba(102, 102, 102, 0.116);
-  padding: 28px;
+  gap: auto;
+  max-width: 200px;
+}
+
+/* ALERTS */
+
+.warning-red {
+  background-color: #d9480f;
+  color: #fff;
+  padding: 10px 30px;
+  border-radius: 15px;
+  font-size: 13px;
+  margin-bottom: 40px;
 }

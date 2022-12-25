@@ -6,7 +6,7 @@ if (!isset($_SESSION['admin'])) {
   die;
 };
 
-if (!file_exists(__DIR__ . '/users')) {
+if (!file_exists(__DIR__ . '/users') || $arrOfSurnames = []) {
   $arr = [];
 } else {
   $arr = unserialize(file_get_contents(__DIR__ . '/users'));
@@ -16,34 +16,54 @@ if (!file_exists(__DIR__ . '/users')) {
   array_multisort($arrOfSurnames, SORT_ASC, $arr,);
 }
 
+
+if (isset($_SESSION['warning'])) {
+  $warningDelete = $_SESSION['warning'];
+  unset($_SESSION['warning']);
+}
+
 require __DIR__ . './inc/header.php';
 ?>
 
-<main class="container main-inner">
-  <h1 class="main-title">Sąskaitų sąrašas</h1>
-  <div>
-    <?php foreach ($arr as $user) : ?>
+<main class="container">
+  <div class="main-inner">
+    <h1 class=" main-title">Sąskaitų sąrašas</h1>
+    <?= isset($warningDelete) ? "<p class='warning-red'>$warningDelete</p>" : '' ?>
+    <div>
 
-    <div class="account-info-box">
-      <div><?= $user['id'] ?></div>
-      <div><?= $user['name'] . ' ' . $user['surname'] ?></div>
-      <div><?= $user['personal-number'] ?></div>
-      <div><?= $user['iban'] ?></div>
-      <div><?= $user['balance'] ?></div>
+      <?php foreach ($arr as $user) : ?>
 
-      <a href="http://localhost/smartmoney/add.php?id=<?= $user['id'] ?>" class="btn btn-main btn-green">ĮNEŠTI</a>
+      <div class="account-info-box">
+        <p class="id-number">&#35;<?= $user['id'] ?></p>
+        <p class="full-name"><i class="fa-solid fa-user-large person-icon"></i>
+          <?= $user['name'] . ' ' . $user['surname'] ?></p>
+        <div>
+          <p><span class="personal-number-abbr">A.k.: </span><?= $user['personal-number'] ?></p>
+          <p class="iban"><span class="iban-lt-chars">LT </span><?= $user['iban'] ?></p>
+        </div>
 
-      <a href="http://localhost/smartmoney/withdrawal.php?id=<?= $user['id'] ?>" class=" btn btn-main
-        btn-yellow">IŠIMTI</a>
+        <div class="accounts-right-box">
+          <p class="balance"><?= $user['balance'] ?> &euro;</p>
+          <div class="accounts-btns">
+            <a href="http://localhost/smartmoney/add.php?id=<?= $user['id'] ?>" class="accounts-btn btn-green"><i
+                class="fa-solid fa-plus"></i><i class="fa-solid fa-circle-dollar"></i></a>
 
-      <form action="http://localhost/smartmoney/delete.php?id=<?= $user['id'] ?>" method="post">
-        <button type="submit" class="btn btn-main btn-red"><i class="fa-solid fa-x"></i></button>
-      </form>
+            <a href="http://localhost/smartmoney/withdrawal.php?id=<?= $user['id'] ?>" class="accounts-btn
+            btn-yellow"><i class="fa-solid fa-minus"></i></a>
+
+            <form action="http://localhost/smartmoney/delete.php?id=<?= $user['id'] ?>" method="post">
+              <button type="submit" class="accounts-btn btn-red"><i class="fa-solid fa-x"></i></button>
+            </form>
+          </div>
 
 
+        </div>
+
+      </div>
+
+
+      <?php endforeach ?>
     </div>
-
-    <?php endforeach ?>
   </div>
 </main>
 
