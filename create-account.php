@@ -12,12 +12,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
   if (preg_match('/[a-ząčęėįšųū\s]{4,}/i', $_POST['name'])) {
     $name = $_POST['name'];
   } else {
-    echo 'Vardas turi būti ilgesnis nei 3 simboliai.';
+    $_SESSION['error-name'] = 'Vardas privalo būti ilgesnis nei 3 simboliai.';
   }
   if (preg_match('/[a-ząčęėįšųū\s]{4,}/i', $_POST['surname'])) {
     $surname = $_POST['surname'];
   } else {
-    echo 'Pavardė turi būti ilgesnė nei 3 simboliai.';
+    $_SESSION['error-surname'] = 'Pavardė privalo būti ilgesnis nei 3 simboliai.';
+    header("http://localhost/smartmoney/create-account.php");
+    die;
   }
 
   if (preg_match('/^[1-6]\d{2}(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])\d{4}$/', $_POST['personal-number'])) {
@@ -29,18 +31,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     }
     $personalNumber = $_POST['personal-number'];
   } else {
-    echo 'Neteisingas asmens kodas.';
+    $_SESSION['error-personal-number'] = 'Neteisingas asmens kodas.';
+    header("http://localhost/smartmoney/create-account.php");
+    die;
   }
 
   $newUser = ['id' => rand(1000000, 9999999), 'name' => $name, 'surname' => $surname, 'personal-number' => $personalNumber, 'iban' => $ibanValue, 'balance' => 0];
 
   $users[] = $newUser;
 
+  if (isset($_SESSION['error-name'])) {
+    $errorName = $_SESSION['error-name'];
+    unset($_SESSION['error-name']);
+  }
+
+  if (isset($_SESSION['error-surname'])) {
+    $errorSurname = $_SESSION['error-surname'];
+    unset($_SESSION['error-surname']);
+  }
+
   file_put_contents(__DIR__ . '/users', serialize($users));
 
   header("Location: http://localhost/smartmoney/accounts.php");
   die;
 }
+
 
 
 require __DIR__ . './inc/header.php';
@@ -50,6 +65,9 @@ require __DIR__ . './inc/header.php';
 <main class=" container">
   <div class="main-inner">
     <h1 class="main-title">Sukurti sąskaitą</h1>
+    <?= isset($errorName) ? "<p class='error-red'>$errorName</p>" : '' ?>
+    <?= isset($errorSurname) ? "<p class='success-green'>$errorSurname</p>" : '' ?>
+
     <img src="./assets/img/money-ill.png" alt="Money illustration" class="money-pic">
     <form class="registration-form" action="http://localhost/smartmoney/create-account.php" method="post">
 
