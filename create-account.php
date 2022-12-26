@@ -2,6 +2,8 @@
 
 session_start();
 
+
+
 if (isset($_SESSION['error-name'])) {
   $errorName = $_SESSION['error-name'];
   unset($_SESSION['error-name']);
@@ -67,6 +69,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
   file_put_contents(__DIR__ . '/users', serialize($users));
 
+  $_SESSION['success-new-account'] = 'Sėkmingai sukūrėte naują sąskaitą.';
+
   if (!isset($_SESSION['error-personal-number-exists'])) {
     header('Location: http://localhost/smartmoney/accounts.php');
     die;
@@ -98,12 +102,11 @@ require __DIR__ . './inc/header.php';
 
       <input type="text" id="iban" placeholder="IBAN*" name="iban" value="LT <?= $ibanValue ?>" readonly>
 
-      <button type="submit" name="submit" class="btn-main btn-green"><i
-          class="fa-solid fa-user-plus add-person-icon"></i> SUKURTI</button>
+      <button type="submit" name="submit" class="btn-main btn-green"><i class="fa-solid fa-user-plus add-person-icon"></i> SUKURTI</button>
     </form>
 
     <?php if (isset($error)) : ?>
-    <div class="warning-red" role="alert"><?= $error ?></div>
+      <div class="warning-red" role="alert"><?= $error ?></div>
     <?php endif ?>
   </div>
 

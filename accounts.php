@@ -9,6 +9,11 @@ if (!isset($_SESSION['admin'])) {
   die;
 };
 
+if (isset($_SESSION['success-new-account'])) {
+  $successNewAccount = $_SESSION['success-new-account'];
+  unset($_SESSION['success-new-account']);
+}
+
 if (!file_exists(__DIR__ . '/users') || $arrOfSurnames = []) {
   $arr = [];
 } else {
@@ -47,6 +52,7 @@ require __DIR__ . './inc/header.php';
   <div class="main-inner">
     <h1 class=" main-title">Sąskaitų sąrašas</h1>
 
+    <?= isset($successNewAccount) ? "<p class='success-green'>$successNewAccount</p>" : '' ?>
     <?= isset($errorDelete) ? "<p class='error-red'>$errorDelete</p>" : '' ?>
     <?= isset($successDelete) ? "<p class='success-green'>$successDelete</p>" : '' ?>
     <?= isset($successAdd) ? "<p class='success-green'>$successAdd</p>" : '' ?>
