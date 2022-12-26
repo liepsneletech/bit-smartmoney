@@ -13,26 +13,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $name = $_POST['name'];
   } else {
     $_SESSION['error-name'] = 'Vardas privalo būti ilgesnis nei 3 simboliai.';
+    header('Location: http://localhost/smartmoney/create-account.php');
+    die;
   }
   if (preg_match('/[a-ząčęėįšųū\s]{4,}/i', $_POST['surname'])) {
     $surname = $_POST['surname'];
   } else {
-    $_SESSION['error-surname'] = 'Pavardė privalo būti ilgesnis nei 3 simboliai.';
-    header("http://localhost/smartmoney/create-account.php");
+    $_SESSION['error-surname'] = 'Pavardė privalo būti ilgesnė nei 3 simboliai.';
+    header('Location: http://localhost/smartmoney/create-account.php');
     die;
   }
 
   if (preg_match('/^[1-6]\d{2}(0[1-9]|1[0-2])(0[1-9]|[12][0-9]|3[01])\d{4}$/', $_POST['personal-number'])) {
     foreach ($users as $user) {
-      if ($user['personal-number'] === $_POST['personal-number']) {;
-        header("http://localhost/smartmoney/create-account.php");
+      if ($user['personal-number'] == $_POST['personal-number']) {
+        $_SESSION['error-personal-number-exists'] = 'Toks asmens kodas jau užregistruotas.';
+        break;
+        header('Location: http://localhost/smartmoney/create-account.php');
         die;
       }
     }
-    $personalNumber = $_POST['personal-number'];
+    $personalNumber = (int) $_POST['personal-number'];
   } else {
     $_SESSION['error-personal-number'] = 'Neteisingas asmens kodas.';
-    header("http://localhost/smartmoney/create-account.php");
+    header('Location: http://localhost/smartmoney/create-account.php');
     die;
   }
 
@@ -50,11 +54,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     unset($_SESSION['error-surname']);
   }
 
+  if (isset($_SESSION['error-personal-number'])) {
+    $errorPersonalNumber = $_SESSION['error-personal-number'];
+    unset($_SESSION['error-personal-number']);
+  }
+
+  if (isset($_SESSION['error-personal-number-exists'])) {
+    $errorPersonalNumberExists = $_SESSION['error-personal-number-exists'];
+    unset($_SESSION['error-personal-number-exists']);
+  }
+
+
   file_put_contents(__DIR__ . '/users', serialize($users));
 
-  header("Location: http://localhost/smartmoney/accounts.php");
+  header('Location: http://localhost/smartmoney/accounts.php');
   die;
 }
+
 
 
 
@@ -65,11 +81,15 @@ require __DIR__ . './inc/header.php';
 <main class=" container">
   <div class="main-inner">
     <h1 class="main-title">Sukurti sąskaitą</h1>
-    <?= isset($errorName) ? "<p class='error-red'>$errorName</p>" : '' ?>
-    <?= isset($errorSurname) ? "<p class='success-green'>$errorSurname</p>" : '' ?>
+
 
     <img src="./assets/img/money-ill.png" alt="Money illustration" class="money-pic">
     <form class="registration-form" action="http://localhost/smartmoney/create-account.php" method="post">
+
+      <?= isset($errorName) ? "<p class='error-red'>$errorName</p>" : '' ?>
+      <?= isset($errorSurname) ? "<p class='error-red'>$errorSurname</p>" : '' ?>
+      <?= isset($errorPersonalNumber) ? "<p class='error-red'>$errorPersonalNumber</p>" : '' ?>
+      <?= isset($errorPersonalNumberExists) ? "<p class='error-red'>$errorPersonalNumberExists</p>" : '' ?>
 
       <input type="text" id="name" placeholder="Vardas*" name="name" required>
 

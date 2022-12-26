@@ -66,7 +66,7 @@ if (isset($_GET['error'])) {
       <p class="bank-name">SmartMoney</p>
 
       <?php if (isset($error)) : ?>
-      <div class="warning-red"><?= $error ?></div>
+      <div class="error-red"><?= $error ?></div>
       <?php endif ?>
 
     </div>

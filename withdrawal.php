@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $users = unserialize(file_get_contents(__DIR__ . '/users'));
 
 $id = (int) $_GET['id'];
@@ -16,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($user['id'] == $id) {
       if ($currentUser['balance'] >= $_POST['balance']) {
         $users[$index]['balance'] -= (float) $_POST['balance'];
+        $_SESSION['success-withdraw'] = 'Sėkmingai minusavote lėšas.';
         break;
       } else {
         echo 'Sąskaitoje nepakanka lėšų.';
@@ -41,7 +44,7 @@ require __DIR__ . './inc/header.php';
         <?= $user['name'] . ' ' . $user['surname'] ?></p>
       <strong>Sąskaitos likutis: <?= number_format($user['balance'], 2, ',', ' ') ?> &euro;</strong>
       <input type="text" name="balance" placeholder="Įrašykite sumą">
-      <button type="submit" class="btn btn-main btn-yellow">PATVIRTINTI</button>
+      <button type="submit" class="btn-main btn-yellow" name="withdraw">PATVIRTINTI</button>
       <div class="img-box"><img src="./assets/img/withdraw-money-pic.png" alt="Withdraw money"
           class="withdraw-money-pic">
       </div>
