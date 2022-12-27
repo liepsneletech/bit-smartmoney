@@ -19,7 +19,7 @@ foreach ($users as $index => $user) {
 }
 
 if (isset($_POST['withdraw'])) {
-  if ((float) $_POST['balance'] > 0.01) {
+  if ((float) $_POST['balance'] > $user['balance'] || (float) $_POST['balance'] < 0.01) {
     $_SESSION['error-amount'] = 'Įveskite validžią sumą.';
     header("Location: http://localhost/smartmoney/withdrawal.php?id=$id");
     die;
@@ -28,7 +28,7 @@ if (isset($_POST['withdraw'])) {
   foreach ($users as $index => $user) {
     if ($user['id'] == $id) {
       $users[$index]['balance'] -= (float) $_POST['balance'];
-      $_SESSION['success-withdraw'] = 'Sėkmingai atminusavote lėšų.';
+      $_SESSION['success-withdraw'] = 'Sėkmingai nuskaičiavote lėšas.';
       break;
     }
   }

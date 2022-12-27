@@ -29,14 +29,14 @@ $users = unserialize(file_get_contents(__DIR__ . '/users'));
 $ibanValue = rand(0, 9) . rand(0, 9) . ' ' . '0014' . ' ' . '7' . rand(0, 9) . rand(0, 9) . rand(0, 9) . ' ' . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9)  . ' ' . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
-  if (preg_match('/[a-ząčęėįšųū\s]{4,}/i', $_POST['name'])) {
+  if (preg_match('/^([a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ]+([\s]?[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ]+|[\']?[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ]*)){4,}$/', $_POST['name'])) {
     $name = $_POST['name'];
   } else {
     $_SESSION['error-name'] = 'Vardas nėra validus.';
     header('Location: http://localhost/smartmoney/create-account.php');
     die;
   }
-  if (preg_match('/[a-ząčęėįšųū\s]{4,}/i', $_POST['surname'])) {
+  if (preg_match('/^([a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ]+([\s]?[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ]+|[\']?[a-zA-ZąčęėįšųūžĄČĘĖĮŠŲŪŽ]*)){4,}$/', $_POST['surname'])) {
     $surname = $_POST['surname'];
   } else {
     $_SESSION['error-surname'] = 'Pavardė nėra validi.';
