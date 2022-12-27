@@ -28,6 +28,7 @@ if (isset($_POST['add'])) {
   foreach ($users as $index => $user) {
     if ($user['id'] == $id) {
       $users[$index]['balance'] += (float) $_POST['balance'];
+      $users[$index]['balance'] = round($users[$index]['balance'], 2);
       $_SESSION['success-add'] = 'Sėkmingai pridėjote lėšų.';
       break;
     }

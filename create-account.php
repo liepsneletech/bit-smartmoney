@@ -24,6 +24,11 @@ if (isset($_SESSION['error-personal-number-exists'])) {
 
 $currentPage = 'create-account';
 
+if (!isset($_SESSION['admin'])) {
+  header('Location: http://localhost/smartmoney/login.php?error');
+  die;
+};
+
 $users = unserialize(file_get_contents(__DIR__ . '/users'));
 
 $ibanValue = rand(0, 9) . rand(0, 9) . ' ' . '0014' . ' ' . '7' . rand(0, 9) . rand(0, 9) . rand(0, 9) . ' ' . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9)  . ' ' . rand(0, 9) . rand(0, 9) . rand(0, 9) . rand(0, 9);
@@ -50,8 +55,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         $_SESSION['error-personal-number-exists'] = 'Toks asmens kodas jau užregistruotas.';
         header('Location: http://localhost/smartmoney/create-account.php');
         die;
-      } else {
-        $personalNumber = (int) $_POST['personal-number'];
       }
     }
   } else {
@@ -59,6 +62,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     header('Location: http://localhost/smartmoney/create-account.php');
     die;
   }
+
+  $personalNumber = (int) $_POST['personal-number'];
 
   $newUser = ['id' => rand(1000000, 9999999), 'name' => $name, 'surname' => $surname, 'personal-number' => $personalNumber, 'iban' => $ibanValue, 'balance' => 0];
 
@@ -68,10 +73,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
   $_SESSION['success-new-account'] = 'Sėkmingai sukūrėte naują sąskaitą.';
 
-  if (!isset($_SESSION['error-personal-number-exists'])) {
-    header('Location: http://localhost/smartmoney/accounts.php');
-    die;
-  }
+
+  header('Location: http://localhost/smartmoney/accounts.php');
 }
 
 require __DIR__ . './inc/header.php';
