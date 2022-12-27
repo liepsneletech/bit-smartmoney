@@ -6,6 +6,11 @@ $users = unserialize(file_get_contents(__DIR__ . '/users'));
 
 $id = (int) $_GET['id'];
 
+if (isset($_SESSION['error-amount'])) {
+  $errorAmount = $_SESSION['error-amount'];
+  unset($_SESSION['error-amount']);
+}
+
 foreach ($users as $index => $user) {
   if ($user['id'] == $id) {
     $currentUser = $users[$index];
@@ -14,6 +19,12 @@ foreach ($users as $index => $user) {
 }
 
 if (isset($_POST['add'])) {
+  if ((float) $_POST['balance'] < 0.01) {
+    $_SESSION['error-amount'] = 'Įveskite validžią sumą.';
+    header("Location: http://localhost/smartmoney/add.php?id=$id");
+    die;
+  }
+
   foreach ($users as $index => $user) {
     if ($user['id'] == $id) {
       $users[$index]['balance'] += (float) $_POST['balance'];
@@ -35,6 +46,8 @@ require __DIR__ . './inc/header.php';
     <h1 class="main-title">Įnešti lėšų į sąskaitą</h1>
 
     <form action="http://localhost/smartmoney/add.php?id=<?= $id ?>" method="post" class="money-operation-box">
+      <?= isset($errorAmount) ? "<p class='error-red'>$errorAmount</p>" : '' ?>
+
       <p class="full-name"><i class="fa-solid fa-user-large person-icon"></i>
         <?= $user['name'] . ' ' . $user['surname'] ?></p>
       <strong>Sąskaitos likutis: <?= number_format($user['balance'], 2, ',', ' ') ?> &euro;</strong>

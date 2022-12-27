@@ -2,8 +2,6 @@
 
 session_start();
 
-
-
 if (isset($_SESSION['error-name'])) {
   $errorName = $_SESSION['error-name'];
   unset($_SESSION['error-name']);
@@ -34,14 +32,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
   if (preg_match('/[a-ząčęėįšųū\s]{4,}/i', $_POST['name'])) {
     $name = $_POST['name'];
   } else {
-    $_SESSION['error-name'] = 'Vardas privalo būti ilgesnis nei 3 simboliai.';
+    $_SESSION['error-name'] = 'Vardas nėra validus.';
     header('Location: http://localhost/smartmoney/create-account.php');
     die;
   }
   if (preg_match('/[a-ząčęėįšųū\s]{4,}/i', $_POST['surname'])) {
     $surname = $_POST['surname'];
   } else {
-    $_SESSION['error-surname'] = 'Pavardė privalo būti ilgesnė nei 3 simboliai.';
+    $_SESSION['error-surname'] = 'Pavardė nėra validi.';
     header('Location: http://localhost/smartmoney/create-account.php');
     die;
   }
@@ -50,7 +48,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     foreach ($users as $user) {
       if ($user['personal-number'] == (int) $_POST['personal-number']) {
         $_SESSION['error-personal-number-exists'] = 'Toks asmens kodas jau užregistruotas.';
-        break;
         header('Location: http://localhost/smartmoney/create-account.php');
         die;
       } else {
